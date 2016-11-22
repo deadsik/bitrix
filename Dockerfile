@@ -5,6 +5,8 @@ ENV container docker
 
 RUN yum update -y
 RUN yum upgrade -y
+RUN yum install wget -y
+
 RUN wget http://repos.1c-bitrix.ru/yum/bitrix-env.sh -O /usr/local/src/bitrix-env.sh
 RUN chmod +x /usr/local/src/bitrix-env.sh
 RUN /usr/local/src/bitrix-env.sh
