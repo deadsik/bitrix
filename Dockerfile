@@ -4,7 +4,7 @@ RUN yum install openssh-server -y
 RUN yum install wget -y
 
 # bitrix
-RUN wget http://repos.1c-bitrix.ru/yum/bitrix-env.sh /tmp/
+RUN wget http://repos.1c-bitrix.ru/yum/bitrix-env.sh -O /tmp/bitrix-env.sh
 RUN chmod +x /tmp/bitrix-env.sh
 RUN sed -i 's/read version_c/version_c=5/gi' /tmp/bitrix-env.sh
 RUN /tmp/bitrix-env.sh
