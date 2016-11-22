@@ -1,19 +1,7 @@
-FROM centos:latest
-MAINTAINER MIRhosting <dev@mirhosting.com>
+FROM centos:6.6
 
-ENV container docker
-
-RUN yum update -y
-RUN yum upgrade -y
-RUN yum install wget -y
-
-COPY install.sh /root/install.sh
-RUN chmod +x /root/install.sh
-RUN /root/install.sh
-
-COPY start.sh /root/start.sh
-RUN chmod +x /root/start.sh
-ENTRYPOINT /root/start.sh
-
-
-EXPOSE 21 22 25 53 80 110 143 443 465 3306
+# bitrix
+ADD http://repos.1c-bitrix.ru/yum/bitrix-env.sh /tmp/
+RUN chmod +x /tmp/bitrix-env.sh
+RUN sed -i 's/read version_c/version_c=5/gi' /tmp/bitrix-env.sh
+RUN /tmp/bitrix-env.sh
