@@ -21,6 +21,8 @@ RUN yum install -y \
   openssh-server \
 wget
 
+RUN ls -l /etc/ > /root/etc.txt
+
 RUN wget http://repos.1c-bitrix.ru/yum/bitrix-env.sh -O /usr/local/src/bitrix-env.sh
 RUN chmod +x /usr/local/src/bitrix-env.sh
 RUN /usr/local/src/bitrix-env.sh
